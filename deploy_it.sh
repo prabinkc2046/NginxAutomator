@@ -266,7 +266,7 @@ EOF
             ln -s /etc/nginx/sites-available/$site /etc/nginx/sites-enabled/
             ;;
 
-        "fedora")
+        "fedora"|"centos")
             # Create a new configuration file for the site in conf.d directory
             echo "Creating a virtual host for $site_name"
             site="$site_name".conf
