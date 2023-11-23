@@ -9,7 +9,7 @@
 #
 # Usage: ./deploy_it.sh <site-name> <github-repo-link> <project directory name> <server-name>
 #
-# Important: This script is intended to run on Ubuntu as sudo.
+# Important: This script is intended to run on Debian based (Ubuntu) and Fedora based(Fedora and Centos)
 # Ensure you have backups before running the script.
 #
 # License: MIT License (see LICENSE file for details)
