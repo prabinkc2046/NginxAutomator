@@ -9,7 +9,7 @@
 #
 # Usage: ./deploy_it.sh <site-name> <github-repo-link> <project directory name> <server-name>
 #
-# Important: This script is intended to run on Debian based (Ubuntu) and Fedora based(Fedora and Centos)
+# Important: This script is intended to run on Debian based (Ubuntu) and Fedora based(Fedora, Centos, Amazon Linux etc)
 # Ensure you have backups before running the script.
 #
 # License: MIT License (see LICENSE file for details)
@@ -115,7 +115,7 @@ install_it(){
                 check_err "apt install -y $package_name" "$?"
             fi
             ;;
-        "fedora"|"centos")
+        "fedora"|"centos"|"amzn")
             if rpm -q --quiet $package_name; then
                 echo "$package_name is already installed. Skipping installation..."
             else
@@ -217,7 +217,7 @@ create_site(){
             fi
             ;;
 
-        "fedora"|"centos")
+        "fedora"|"centos"|"amzn")
             # Define the path to the default site directory for Fedora/CentOS
             path_to_default_site_dir=/usr/share/nginx/html
 
@@ -266,7 +266,7 @@ EOF
             ln -s /etc/nginx/sites-available/$site /etc/nginx/sites-enabled/
             ;;
 
-        "fedora"|"centos")
+        "fedora"|"centos"|"amzn")
             # Create a new configuration file for the site in conf.d directory
             echo "Creating a virtual host for $site_name"
             site="$site_name".conf
@@ -335,7 +335,7 @@ update_it(){
         apt update -y >> /dev/null 2>&1 | tee log_error.txt
         check_err "apt update -y" "$?"
         ;;
-    "fedora"|"centos")
+    "fedora"|"centos"|"amzn")
         # Update using dnf for Fedora/CentOS systems
         dnf update -y >> /dev/null 2>&1 | tee log_error.txt
         check_err "dnf update -y" "$?"
