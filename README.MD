@@ -43,8 +43,11 @@ sudo ./deploy_it.sh <site_name> <github_repo> <source_code_dir_name> <server_nam
 Replace placeholders (<...>) with actual values:
 
 site_name: Name of the site to be created (e.g., mywebsite).
+
 github_repo: GitHub repository URL containing the source code.
+
 source_code_dir_name: Name of the directory containing the source code.
+
 server_name_or_ip: Domain name or IP address for the server.
 
 Example
