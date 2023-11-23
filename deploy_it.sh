@@ -107,7 +107,7 @@ install_it(){
     for package_name in ${packages[@]}; do
         case $distro in
         "ubuntu"|"debian")
-            if dpkg -l | grep -iq $package_name; then
+             if dpkg -l | awk '{print $2}' | grep $package_name; then
                 echo "$package_name is already installed. Skipping installation..."
             else
                 echo "$package_name is not installed. Installing now..."
@@ -298,7 +298,7 @@ deploy_it(){
     check_if_project_dir_exists
 
     # Check if the project directory exists and proceed accordingly
-    if [ "project_dir_exists" = "yes" ]; then
+    if [ "$project_dir_exists" = "yes" ]; then
         echo "$source_code_dir_name exists in $repo. Deployment starting shortly..."
         echo "Copying the files and folders to the $path_to_new_site"
         # Copy the content of the project directory to the specified site directory
